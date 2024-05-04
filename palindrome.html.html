@@ -1,0 +1,62 @@
+<!--Jacob Macias-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Palindrome Checker</title>
+    <style>
+    
+        /*Font style,text alignment with a margin adjustment and a background-color for the following elements*/
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+            background-color: aqua;
+        }
+        /*the input field that allows users to enter text*/
+        input[type="text"] {
+            padding: 30px;
+            font-size: 20px;
+        }
+        /*the user button created with some texture of padding, color, font properties*/
+        button {
+            padding: 30px 20px;
+            font-size: 20px;
+            background-color: blue;
+            color: white;
+            cursor: pointer;
+        }
+        /*here is the selector that is used to display the palindrome result with a margin and font properties*/
+        #result {
+            margin-top: 100px;
+            font-size: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Palindrome Checker</h2>
+    <!--Input element that allows us to assign the text, identifier "input string" and have a place holder within the input field-->
+    <input type="text" id="inputString" placeholder="Type Palindrome Here">
+    <!-- our button element to check the palindrome using an event handler attribute that takes place once the user clicks the button-->
+    <button onclick="checkPalindrome()">Check Palindrome</button>
+    <!--here is our final result text delivered using the div element to display the text using the id attribute assigning the "result" identifier-->
+    <div id="result"></div>
+
+    <audio id="sound" src="UATspaceSound.mp3"></audio>
+
+
+    <script>
+        /*our function declared*/
+        function checkPalindrome() {
+            var input = document.getElementById("inputString").value.toLowerCase().replace(/[^a-z0-9]/g, ''); /*the input field "inputstring" is retrieved,converted to lowercase and all non alpha-characters are removed so that we can ensure consistency to handle different variations of input strings*/
+            var reversedInput = input.split('').reverse().join(''); /*this variable splits the word into letters, reverses the letters, then joins the letters to recreate the word to test if it passes as a pallindrome or not*/
+            var result = (input === reversedInput) ? "Yes, it's a palindrome!" : "No, it's not a palindrome."; /* This line updates the <div> element by evaluating if the input is equal to its reversed spelling. Following we have a ternary operator executing our results of the users input if the user is wright or wrong.*/
+            document.getElementById("result").innerText = result; /*our ID "result" is returned here throught the use of the .innerText with the new value*/
+            var sound = document.getElementById("sound");
+            sound.play();
+        }
+
+       
+    </script>
+</body>
+</html>
